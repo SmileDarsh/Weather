@@ -1,11 +1,13 @@
 package com.emiratesauction.weather.city.presentation.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.emiratesauction.weather.R
 import com.emiratesauction.weather.city.domain.model.City
+import com.emiratesauction.weather.city.presentation.activities.WeatherActivity
 import com.emiratesauction.weather.helper.OnItemAdapterClickListener
 import com.emiratesauction.weather.helper.loadUrl
 import com.emiratesauction.weather.helper.temp
@@ -72,6 +74,10 @@ class CityAdapter(private val mCallBack: OnItemAdapterClickListener<City>) :
             }
 
             itemView.setOnClickListener {
+                it.context.startActivity(
+                    Intent(it.context, WeatherActivity::class.java)
+                        .putExtra("cityName", item.name)
+                )
             }
         }
     }

@@ -14,4 +14,8 @@ class WeatherRestDataStore(private val iApiClient: IApiClient) {
     fun getCity(text: String): Flow<City> = flow {
         emit(iApiClient.getCity(text))
     }
+
+    fun getWeathers(text: String): Flow<MutableList<City>> = flow {
+        emit(iApiClient.getWeathers(text).list.filter { it.dt_txt?.contains("12:00:00")!! }.toMutableList())
+    }
 }

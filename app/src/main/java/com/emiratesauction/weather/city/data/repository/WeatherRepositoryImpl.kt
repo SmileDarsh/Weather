@@ -5,6 +5,7 @@ import com.emiratesauction.weather.city.data.local.WeatherLocalDataStore
 import com.emiratesauction.weather.city.data.rest.WeatherRestDataStore
 import com.emiratesauction.weather.city.domain.model.City
 import com.emiratesauction.weather.city.domain.repository.WeatherRepository
+import com.emiratesauction.weather.network.NO_INTERNET_FOUND
 import com.emiratesauction.weather.network.NetworkManager
 import kotlinx.coroutines.flow.Flow
 
@@ -23,6 +24,14 @@ class WeatherRepositoryImpl(
             mWeatherRestDataStore.getCity(text)
         } else {
             mWeatherLocalDataStore.getCity()
+        }
+    }
+
+    override fun getWeathers(text: String): Flow<MutableList<City>> {
+        return if (NetworkManager.isOnline(mContext)) {
+            mWeatherRestDataStore.getWeathers(text)
+        } else {
+            throw Exception(NO_INTERNET_FOUND)
         }
     }
 

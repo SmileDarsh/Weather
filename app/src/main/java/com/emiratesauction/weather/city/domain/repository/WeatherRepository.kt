@@ -10,6 +10,8 @@ import kotlinx.coroutines.flow.Flow
 interface WeatherRepository {
     fun getCity(text : String): Flow<City>
 
+    fun getWeathers(text : String): Flow<MutableList<City>>
+
     fun saveCity(city : City): Flow<Boolean>
 
     fun removeCity(city : City): Flow<Boolean>

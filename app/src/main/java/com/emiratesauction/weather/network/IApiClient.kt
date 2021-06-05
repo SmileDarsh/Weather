@@ -1,5 +1,6 @@
 package com.emiratesauction.weather.network
 
+import com.emiratesauction.weather.city.data.rest.response.DataListResponse
 import com.emiratesauction.weather.city.domain.model.City
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -12,4 +13,7 @@ import retrofit2.http.Query
 interface IApiClient {
     @GET("weather")
     suspend fun getCity(@Query("q") text: String): City
+
+    @GET("forecast")
+    suspend fun getWeathers(@Query("q") text: String): DataListResponse<City>
 }
