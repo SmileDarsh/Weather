@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Weather</string>
+    <string name="weather_for_next_5_days">Weather for the next 5 days</string>
+    <string name="city">City</string>
+    <string name="save_offline">Save Offline</string>
+    <string name="temp">%1$.0f°C</string>
+    <string name="feels_like">Feels like %1$.0f°C</string>
+    <string name="remove">Remove</string>
+    <string name="search_for_city">Search for city</string>
+    <string name="no_weathers">There are no weathers</string>
+    <string name="no_city">There are no city</string>
+    <string name="save_city">Save city was successful</string>
+    <string name="remove_city">Remove city was successful</string>
+    <string name="retry">Retry</string>
+    <string name="no_internet">No Internet Connection. Make sure Wi-Fi or Cellular data is turned on , then try again</string>
 </resources>
