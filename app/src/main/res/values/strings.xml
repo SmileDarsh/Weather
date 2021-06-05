@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Weather</string>
+    <string name="retry">Retry</string>
+    <string name="no_internet">No Internet Connection. Make sure Wi-Fi or Cellular data is turned on , then try again</string>
 </resources>
