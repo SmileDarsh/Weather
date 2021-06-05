@@ -44,7 +44,7 @@ class WeatherAdapter : RecyclerView.Adapter<WeatherAdapter.WeatherHolder>() {
             }
             itemView.tvTemp.temp(item.main?.temp)
             itemView.tvFeelsLike.text =
-                itemView.context.getString(R.string.feels_like, item.main?.feels_like ?: 0.0 / 10)
+                itemView.context.getString(R.string.feels_like, (item.main?.feels_like ?: 0.0) / 10)
             itemView.tvWind.text = String.format("%.0f", item.wind?.speed)
             itemView.tvTempMax.temp(item.main?.temp_max)
             itemView.tvTempMin.temp(item.main?.temp_min)
