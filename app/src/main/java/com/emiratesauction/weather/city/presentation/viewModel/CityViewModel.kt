@@ -76,6 +76,7 @@ class CityViewModel(
                     mRemoveCityInteractor.execute(city).collect {
                         ui {
                             mViewState.value = WeatherVS.RemoveCity(city)
+                            if (!it) mViewState.value = WeatherVS.Empty
                         }
                     }
                 }

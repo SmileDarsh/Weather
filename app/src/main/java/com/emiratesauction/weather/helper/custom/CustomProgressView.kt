@@ -122,6 +122,7 @@ class CustomProgressView : CardView {
     }
 
     fun showMessageError(@StringRes errorMessage: Int) {
+        show()
         showMessageView()
         mTvProgress.text = context.getString(errorMessage)
     }

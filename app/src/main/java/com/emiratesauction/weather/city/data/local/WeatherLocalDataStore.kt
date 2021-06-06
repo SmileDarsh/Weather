@@ -13,7 +13,7 @@ class WeatherLocalDataStore(private val mRoomDB: RoomDB) {
 
     fun getCity(): Flow<City> = flow {
         val dbList = mRoomDB.cityDao()?.getCities()
-        if (dbList != null && dbList.size > 0) {
+        if (dbList != null && dbList.isNotEmpty()) {
             dbList.forEach { emit(City().addCity(it)) }
         } else {
             emit(City())
@@ -45,7 +45,9 @@ class WeatherLocalDataStore(private val mRoomDB: RoomDB) {
             city.weather?.let {
                 mRoomDB.weatherDao()?.deleteWeather(it.first())
             }
-            emit(true)
+            val dbList = mRoomDB.cityDao()?.getCities()
+            if (dbList != null && dbList.isNotEmpty()) emit(true)
+            else emit(false)
         }
     }
 }
