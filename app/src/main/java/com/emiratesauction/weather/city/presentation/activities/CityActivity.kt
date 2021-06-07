@@ -35,7 +35,7 @@ class CityActivity : AppCompatActivity(), OnItemAdapterClickListener<City> {
                 }
                 is WeatherVS.SaveCity -> {
                     Toast.makeText(this@CityActivity, R.string.save_city, Toast.LENGTH_SHORT).show()
-                    mAdapter.notifyDataSetChanged()
+                    clearText()
                 }
                 is WeatherVS.RemoveCity -> {
                     Toast.makeText(this@CityActivity, R.string.remove_city, Toast.LENGTH_SHORT)
@@ -66,18 +66,20 @@ class CityActivity : AppCompatActivity(), OnItemAdapterClickListener<City> {
             }
             true
         }
-        ibnClear.setOnClickListener {
-            etSearch.hideSoftInput()
-            etSearch.text.clear()
-            mText = ""
-            cpProgress?.hideMessageView()
-            getCities()
-        }
+        ibnClear.setOnClickListener { clearText() }
     }
 
     private fun getCities() {
         mAdapter.clearItems()
         mViewModel.city(mText)
+    }
+
+    private fun clearText(){
+        etSearch.hideSoftInput()
+        etSearch.text.clear()
+        mText = ""
+        cpProgress?.hideMessageView()
+        getCities()
     }
 
     private fun cityRecyclerView() {
